@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <body onunload="onunloadFunction()" s>
+    <h2>JavaScript addEventListener()</h2>
+
+    <p>
+      This example uses the HTML DOM to assign an "onload" event to an iframe
+      element.
+    </p>
+
+    <iframe id="myFrame" src="/default.asp"></iframe>
+
+    <p id="demo"></p>
+
+    <p>
+      This example uses the HTML DOM to assign an "onfocus" event to an input
+      element.
+    </p>
+
+    Enter your name: <input type="text" id="fname" />
+    <p>
+      This example uses the HTML DOM to assign an "onblur" event to an input
+      element.
+    </p>
+
+    <p>
+      Write something in the input field, and then click outside the field to
+      lose focus (blur).
+    </p>
+
+    <input type="text" id="fname" />
+    <p>
+      This example uses the HTML DOM to assign an "onchange" event to an input
+      element.
+    </p>
+
+    Enter your name: <input type="text" id="fname" />
+
+    <p>
+      When you leave the input field, a function is triggered which transforms
+      the input text to upper case.
+    </p>
+    <p>
+      This example uses the addEventListener() method to add many events on the
+      same button like "onclick", "moouse out", "mouse over".
+    </p>
+
+    <button id="myBtn">Try it</button>
+
+    <p id="demo"></p>
+
+    <p>
+      This example uses the HTML DOM to assign an "onsubmit" event to a form
+      element.
+    </p>
+
+    <p>
+      When you submit the form, a function is triggered which alerts some text.
+    </p>
+
+    <form id="myForm" action="/action_page.php">
+      Enter name: <input type="text" name="fname" />
+      <input type="submit" value="Submit" />
+    </form>
+    <p>Close this window or press F5 to reload the page.</p>
+    <p>
+      <strong>Note:</strong> Due to different browser settings, this event may
+      not always work as expected.
+    </p>
+
+    <script>
+      //onLoad event listener
+
+      document.getElementById("myFrame").onload = function () {
+        onloadFunction();
+      };
+
+      function onloadFunction() {
+        document.getElementById("demo").innerHTML = "Iframe is loaded.";
+      }
+
+      // onUnload eventlistener
+
+      function onunloadFunction() {
+        alert("Thank you!");
+      }
+
+      // Onfocus event listener
+
+      document.getElementById("fname").onfocus = function () {
+        onfocusFunction();
+      };
+
+      function onfocusFunction() {
+        document.getElementById("fname").style.backgroundColor = "red";
+      }
+
+      // OnBlur event listener
+
+      document.getElementById("fname").onblur = function () {
+        onblurFunction();
+      };
+
+      function onblurFunction() {
+        alert("Input field lost focus.");
+      }
+
+      // onChange event listener
+
+      document.getElementById("fname").onchange = function () {
+        onchangeFunction();
+      };
+
+      function onchangeFunction() {
+        var x = document.getElementById("fname");
+        x.value = x.value.toUpperCase();
+      }
+
+      // OnmouseOver, onMouseOut, onClick event listener
+
+      var x = document.getElementById("myBtn");
+      x.addEventListener("mouseover", myFunction);
+      x.addEventListener("click", mySecondFunction);
+      x.addEventListener("mouseout", myThirdFunction);
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML += "Moused over!<br>";
+      }
+
+      function mySecondFunction() {
+        document.getElementById("demo").innerHTML += "Clicked!<br>";
+      }
+
+      function myThirdFunction() {
+        document.getElementById("demo").innerHTML += "Moused out!<br>";
+      }
+
+      // onSubmit event listener
+
+      document.getElementById("myForm").onsubmit = function () {
+        onsubFunction();
+      };
+
+      function onsubFunction() {
+        alert("The form was submitted");
+      }
+    </script>
+  </body>
+</html>
